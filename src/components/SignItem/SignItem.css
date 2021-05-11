@@ -1,0 +1,36 @@
+.item-center {
+  margin:auto;
+  height:100%;
+}
+
+.flip-horizontally {
+  transform: scaleX(-1);
+}
+
+.player-button {
+  cursor: pointer;
+}
+
+.player {
+  background-color: var(--player);
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}
+
+.bot {
+  background-color: var(--bot);
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}
+
+.player.player-lose {
+  background-color: var(--bot);
+}
+
+.bot.bot-lose {
+  background-color: var(--player);
+}

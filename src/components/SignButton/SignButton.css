@@ -1,0 +1,10 @@
+.border {
+  cursor: pointer;
+  margin: auto;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.border:hover {
+  opacity: 1;
+}
