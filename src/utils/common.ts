@@ -8,8 +8,8 @@ import paperSvg from "../svgs/paper.svg";
 
 export enum SignType {
   Rock = "Rock",
-  Paper = "Paper",
-  Scissor = "Scissor"
+  Scissor = "Scissor",
+  Paper = "Paper"
 };
 
 export const Win: Map<SignType, SignType> = new Map([
@@ -28,6 +28,10 @@ export enum Status {
 export const getRandomSignType = () => {
   return _.sample(Object.values(SignType))
 };
+
+export const getNextSign = (interval: number) => {
+  return Object.values(SignType)[interval % 3]
+}
 
 export const getSignImage = (sign: SignType | null) => {
   if (sign === null) return "";

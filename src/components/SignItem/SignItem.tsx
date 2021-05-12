@@ -1,4 +1,4 @@
-import { getRandomSignType, getSignImage, Status } from "../..//utils/common";
+import { getNextSign, getSignImage, Status } from "../..//utils/common";
 import React from "react";
 
 import "../../App.css";
@@ -18,13 +18,15 @@ export class SignItem extends React.Component<{ sign: Sign, action?: (selectedSi
   }
 
   componentDidMount() {
+    let timer = 0;
     // Every second set currentSign to a random type, animation
     this.interval = setInterval(() => {
+      timer += 1;
       if(this.hovered)
         return
       this.setState((state) => ({
         currentSign: {
-          type: getRandomSignType(),
+          type: getNextSign(timer),
           isPlayer: this.props.sign.isPlayer,
         },
       }));
@@ -34,6 +36,7 @@ export class SignItem extends React.Component<{ sign: Sign, action?: (selectedSi
   toggle() {
     if(this.props.action){
       this.props.action(this.state.currentSign)
+      this.hovered = false;
     }
   }
 
@@ -63,7 +66,7 @@ export class SignItem extends React.Component<{ sign: Sign, action?: (selectedSi
               ? getSignImage(this.state.currentSign.type)
               : getSignImage(this.props.sign.type)
           }
-          onMouseEnter={() => this.props.sign.isPlayer ? this.hovered = true : ''}
+          onMouseOver={() => this.props.sign.isPlayer ? this.hovered = true : ''}
           onMouseLeave={() => this.hovered = false}
           alt="sign"
           onClick={() => this.toggle()}
